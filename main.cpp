@@ -58,6 +58,7 @@ string name;
 int amount;
 int getData;
 int itemRemove;
+int itemRemove2;
 
 bool checkTime(){
     // divideDate(dmy, userDate, userMonth, userYear);
@@ -412,14 +413,23 @@ int main(){
                 if (itemRemove == 1 || queueItem.getSize() == 1){
                     queueItem.getIndex(0);
                 }
-                cout<< "'" << queueItem.dequeue() << "' succefully deleted!" << endl;
-                // queueItem.dequeue();
                 break;
             
             case 4:
                 cout << "============================================" << endl;
-                // cout<< "'" << queueData.dequeue() << "' succefully deleted!" << endl;
-                // queueData.pop();
+                if (queueItem.getSize() == 0){
+                    cout << "There is no item in the list yet !!" << endl;
+                    break;
+                }
+                cout << "List of items : " << endl;
+                for (int i = 0; i < queueItem.getSize(); i++){
+                    cout << i + 1 << ". ";
+                    queueItem.getIndex(i);
+                }
+                cout << "Enter the index of data that you want to remove : ";
+                cin >> itemRemove2;
+                cout << "List of data : " << endl;
+                for (int i = 0; i < )
                 break;
 
             case 5:
