@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 #include <array>
-#include <map>
 #include "./stack.hpp"
 #include "./queue.hpp"
 
@@ -15,13 +14,6 @@ int count = 0;
 
 //List Item
 Queue<string> queueItem;
-
-//List based on item
-map<string, int(*)[100]> userItem1;
-map<string, int(*)[100]> userItem2;
-map<string, int(*)[100]> userItem3;
-map<string, int(*)[100]> userItem4;
-map<string, int(*)[100]> userItem5;
 
 //List of dmy
 array<int, 100> userDMY1;
@@ -67,9 +59,6 @@ bool checkTime(){
     year = 1900 + today->tm_year;
     month = 1 + today->tm_mon;
     date = today->tm_mday;
-    hour = today->tm_hour;
-    minute = today->tm_min;
-    sec = today->tm_sec;
 
     if (userYear <= year){
         if (userMonth <= month){
@@ -116,6 +105,7 @@ void divideDate(int dmy, int &userDate, int &userMonth, int &userYear){
             userYear = stoi(tempYear);
         }
     }
+    // return userDate + "/" + userMonth + "/" + userYear;
 }
 
 int combineNum(int a, int b){
@@ -174,6 +164,8 @@ int main(){
                 cin >> item;
                 queueItem.enqueue(item);
                 cout << "'" << item << "' has successfuly added!" << endl;
+                cout << "============================================" << endl;
+                cout << "What would you like to do?" << endl;
                 break;
 
             case 2:
@@ -184,8 +176,7 @@ int main(){
                 }
                 cout << "List of items : " << endl;
                 for (int i = 0; i < queueItem.getSize(); i++){
-                    cout << i + 1 << ". ";
-                    queueItem.getIndex(i);
+                    cout << i + 1 << ". " << queueItem.getIndex(i) << endl;
                 }
                 cout << "Please choose the item to add data : ";
                 cin >> getData;
@@ -405,13 +396,34 @@ int main(){
                 }
                 cout << "List of items : " << endl;
                 for (int i = 0; i < queueItem.getSize(); i++){
-                    cout << i + 1 << ". ";
-                    queueItem.getIndex(i);
+                    cout << i + 1 << ". " << queueItem.getIndex(i) << endl;
                 }
                 cout << "Enter the index that you want to remove : ";
                 cin >> itemRemove;
                 if (itemRemove == 1 || queueItem.getSize() == 1){
-                    queueItem.getIndex(0);
+                    string item1 = queueItem.getIndex(0);
+                    string item2 = queueItem.getIndex(1);
+                    string item3 = queueItem.getIndex(2);
+                    string item4 = queueItem.getIndex(3);
+                    string item5 = queueItem.getIndex(4);
+                    // cout << queueItem.front(0) << endl;
+                    Queue<string> queueRemove;
+                    for (int i = 0; i < queueItem.getSize(); i++){
+                        string tempRemove = queueItem.dequeue();
+                        if (tempRemove == item1){
+                            // queueItem.reduceSize();
+                        } else {
+                            queueRemove.enqueue(tempRemove);
+                        }
+                    }
+
+                    for (int i = 0; i < queueRemove.getSize(); i++){
+                        string tempRemove = queueRemove.dequeue();
+                        queueItem.enqueue(tempRemove);
+                    }
+
+                    queueItem.print();
+                    cout << "============================================" << endl;
                 }
                 break;
             
@@ -429,11 +441,32 @@ int main(){
                 cout << "Enter the index of data that you want to remove : ";
                 cin >> itemRemove2;
                 cout << "List of data : " << endl;
-                for (int i = 0; i < )
+                if (itemRemove2 == 1 || queueItem.getSize() == 1){
+                    for (int i = 0; i < user1count; i++){
+                        divideDate(userDMY1[i] ,userDate, userMonth, userYear);
+                        cout << userDate << "/" << userMonth << "/" << userYear;
+                    }
+                } 
+                // else if (itemRemove2 == 2 || queueItem.getSize() == 2){
+                //     for (int i = 0; i < ){
+
+                //     }
+                // } else if (itemRemove2 == 3 || queueItem.getSize() == 3){
+                //     for (int i = 0; i < )
+                // } else if (itemRemove2 == 4 || queueItem.getSize() == 4){
+                //     for (int i = 0; i < )
+                // } else if (itemRemove2 == 5 || queueItem.getSize() == 5){
+                //     for (int i = 0; i < )
+                // }
+                
                 break;
 
             case 5:
-                // cout << "============================================" << endl;
+                cout << "============================================" << endl;\
+                // int dmy;
+                // cin >> dmy;
+                // cout << divideDate(dmy, userDate, userMonth, userYear) << endl;
+                // cout << checkTime() << endl;
                 // cout<< "[";
                 // while(!queueData.empty()){
                 //     cout<< queueData.dequeue() << " ";
