@@ -11,10 +11,6 @@ class Queue{
         int index;
         int input;
 
-        void swap(T &a, T &b);
-        void heapify(int size, int i);
-        bool bSearch(T left, T right, T target);
-
     public :
         Queue(){
             this->size = 0;
@@ -22,11 +18,10 @@ class Queue{
         }
         void enqueue(T item);
         T dequeue();
-        void getIndex(int input);
+        T getIndex(int input);
         void print();
         int getSize();
-        void sorting();
-        void binarySearch(T target);
+        void reduceSize();
 };
 
 // IMPLEMENTATIONS
@@ -46,10 +41,10 @@ T Queue<T>::dequeue(){
 }
 
 template <typename T>
-void Queue<T>::getIndex(int input){
+T Queue<T>::getIndex(int input){
     this->input = input;
     if (this->size != 0){
-        cout << this->list[this->input] << endl;
+        return this->list[this->input];
     } else {
         cout << "There is nothing inside on the list !!" << endl;
     }
@@ -63,7 +58,11 @@ int Queue<T>::getSize(){
 template <typename T>
 void Queue<T>::print(){
     for (int i = this->index; i < this->size; i++){
-        cout << this->list[i] << " ";
+        cout << i << ". " << this->list[i] << endl;
     }
-    cout << endl;
+}
+
+template <typename T>
+void Queue<T>::reduceSize(){
+    this->size--;
 }
