@@ -33,7 +33,7 @@ void Queue<T>::enqueue(T item){
 
 template <typename T>
 T Queue<T>::dequeue(){
-    if (this->size != 0){
+    if (this->size != -1){
         return this->list[this->index++];
     } else {
         cout << "There is nothing inside on the list !!" << endl;
@@ -58,7 +58,11 @@ int Queue<T>::getSize(){
 template <typename T>
 void Queue<T>::print(){
     for (int i = this->index; i < this->size; i++){
-        cout << i << ". " << this->list[i] << endl;
+        if (this->list[i] == ""){
+            continue;
+        } else {
+            cout << i + 1 << ". " << this->list[i] << endl;
+        }
     }
 }
 
