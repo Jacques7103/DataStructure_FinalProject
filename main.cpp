@@ -395,23 +395,124 @@ int main(){
                     break;
                 }
                 cout << "List of items : " << endl;
-                for (int i = 0; i < queueItem.getSize(); i++){
-                    cout << i + 1 << ". " << queueItem.getIndex(i) << endl;
-                }
+                // cout << queueItem.getIndex(0) << endl;
+                // cout << queueItem.getIndex(1) << endl;
+                // cout << queueItem.getIndex(2) << endl;
+
+                queueItem.print();
+
+                // for (int i = 0; i < queueItem.getSize(); i++){
+                //     cout << i + 1 << ". " << queueItem.getIndex(i) << endl;
+                // }
                 cout << "Enter the index that you want to remove : ";
                 cin >> itemRemove;
-                if (itemRemove == 1 || queueItem.getSize() == 1){
+                if (itemRemove == 1 || queueItem.getSize() <= 1){
                     string item1 = queueItem.getIndex(0);
                     string item2 = queueItem.getIndex(1);
                     string item3 = queueItem.getIndex(2);
                     string item4 = queueItem.getIndex(3);
                     string item5 = queueItem.getIndex(4);
-                    // cout << queueItem.front(0) << endl;
                     Queue<string> queueRemove;
-                    for (int i = 0; i < queueItem.getSize(); i++){
+                    for (int i = 0; i < queueItem.getSize() + 1; i++){
                         string tempRemove = queueItem.dequeue();
                         if (tempRemove == item1){
-                            // queueItem.reduceSize();
+                            queueItem.reduceSize();
+                        } else {
+                            queueRemove.enqueue(tempRemove);
+                        }
+                    }
+
+                    for (int i = 0; i < queueRemove.getSize(); i++){
+                        string tempRemove = queueRemove.dequeue();
+                        queueItem.enqueue(tempRemove);
+                    }
+
+                    queueItem.print();
+                    cout << "============================================" << endl;
+                } else if (itemRemove == 2 || queueItem.getSize() <= 1){
+                    string item1 = queueItem.getIndex(0);
+                    string item2 = queueItem.getIndex(1);
+                    string item3 = queueItem.getIndex(2);
+                    string item4 = queueItem.getIndex(3);
+                    string item5 = queueItem.getIndex(4);
+                    Queue<string> queueRemove;
+                    int size = queueItem.getSize();
+                    for (int i = 0; i < size; i++){
+                        string tempRemove = queueItem.dequeue();
+                        if (tempRemove == item2){
+                            continue;
+                        } else {
+                            queueRemove.enqueue(tempRemove);
+                        }
+                        queueItem.reduceSize();
+                    }
+                    queueRemove.print();
+
+                    for (int i = 0; i < queueRemove.getSize(); i++){
+                        string tempRemove = queueRemove.dequeue();
+                        cout << tempRemove << endl;
+                        queueItem.enqueue(tempRemove);
+                    }
+                    cout << "============================================" << endl;
+                    queueItem.print();
+                    cout << "============================================" << endl;
+                } else if (itemRemove == 3 || queueItem.getSize() <= 1){
+                    string item1 = queueItem.getIndex(0);
+                    string item2 = queueItem.getIndex(1);
+                    string item3 = queueItem.getIndex(2);
+                    string item4 = queueItem.getIndex(3);
+                    string item5 = queueItem.getIndex(4);
+                    Queue<string> queueRemove;
+                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                        string tempRemove = queueItem.dequeue();
+                        if (tempRemove == item3){
+                            queueItem.reduceSize();
+                        } else {
+                            queueRemove.enqueue(tempRemove);
+                        }
+                    }
+
+                    for (int i = 0; i < queueRemove.getSize(); i++){
+                        string tempRemove = queueRemove.dequeue();
+                        queueItem.enqueue(tempRemove);
+                    }
+
+                    queueItem.print();
+                    cout << "============================================" << endl;
+                } else if (itemRemove == 4 || queueItem.getSize() <= 1){
+                    string item1 = queueItem.getIndex(0);
+                    string item2 = queueItem.getIndex(1);
+                    string item3 = queueItem.getIndex(2);
+                    string item4 = queueItem.getIndex(3);
+                    string item5 = queueItem.getIndex(4);
+                    Queue<string> queueRemove;
+                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                        string tempRemove = queueItem.dequeue();
+                        if (tempRemove == item4){
+                            queueItem.reduceSize();
+                        } else {
+                            queueRemove.enqueue(tempRemove);
+                        }
+                    }
+
+                    for (int i = 0; i < queueRemove.getSize(); i++){
+                        string tempRemove = queueRemove.dequeue();
+                        queueItem.enqueue(tempRemove);
+                    }
+
+                    queueItem.print();
+                    cout << "============================================" << endl;
+                } else if (itemRemove == 5 || queueItem.getSize() <= 1){
+                    string item1 = queueItem.getIndex(0);
+                    string item2 = queueItem.getIndex(1);
+                    string item3 = queueItem.getIndex(2);
+                    string item4 = queueItem.getIndex(3);
+                    string item5 = queueItem.getIndex(4);
+                    Queue<string> queueRemove;
+                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                        string tempRemove = queueItem.dequeue();
+                        if (tempRemove == item5){
+                            queueItem.reduceSize();
                         } else {
                             queueRemove.enqueue(tempRemove);
                         }
