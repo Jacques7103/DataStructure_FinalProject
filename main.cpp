@@ -60,9 +60,9 @@ bool checkTime(){
     month = 1 + today->tm_mon;
     date = today->tm_mday;
 
-    if (userYear <= year){
-        if (userMonth <= month){
-            if (userDate <= date){
+    if (userYear < year){
+        if (userMonth < month){
+            if (userDate < date){
                 return true;
             }
         }
@@ -96,7 +96,7 @@ void divideDate(int dmy, int &userDate, int &userMonth, int &userYear){
     }
 
     string tempYear = "";
-    for (int i = 0; i <=3 ; i++){
+    for (int i = 0; i <= 3 ; i++){
         int temp = split.pop();
 
         tempYear += to_string(temp);
@@ -105,6 +105,7 @@ void divideDate(int dmy, int &userDate, int &userMonth, int &userYear){
             userYear = stoi(tempYear);
         }
     }
+
     // return userDate + "/" + userMonth + "/" + userYear;
 }
 
@@ -220,6 +221,7 @@ int main(){
                                 }
                             }
                         }
+                        cout << "============================================" << endl;
                         break;
                     } else if (getData == 2 || queueItem.getSize() == 2){
                         cout << "Enter the date with format (ddmmyyyy): ";
@@ -260,6 +262,7 @@ int main(){
                                 }
                             }
                         }
+                        cout << "============================================" << endl;
                         break;
                     } else if (getData == 3 || queueItem.getSize() == 3){
                         cout << "Enter the date with format (ddmmyyyy): ";
@@ -300,6 +303,7 @@ int main(){
                                 }
                             }
                         }
+                        cout << "============================================" << endl;
                         break;
                     } else if (getData == 4 || queueItem.getSize() == 4){
                         cout << "Enter the date with format (ddmmyyyy): ";
@@ -340,6 +344,7 @@ int main(){
                                 }
                             }
                         }
+                        cout << "============================================" << endl;
                         break;
                     } else if (getData == 5 || queueItem.getSize() == 5){
                         cout << "Enter the date with format (ddmmyyyy): ";
@@ -380,6 +385,7 @@ int main(){
                                 }
                             }
                         }
+                        cout << "============================================" << endl;
                         break;
                     } else {
                         cout << "Please enter a number in range " << queueItem.getSize() << " : ";
@@ -395,15 +401,7 @@ int main(){
                     break;
                 }
                 cout << "List of items : " << endl;
-                // cout << queueItem.getIndex(0) << endl;
-                // cout << queueItem.getIndex(1) << endl;
-                // cout << queueItem.getIndex(2) << endl;
-
                 queueItem.print();
-
-                // for (int i = 0; i < queueItem.getSize(); i++){
-                //     cout << i + 1 << ". " << queueItem.getIndex(i) << endl;
-                // }
                 cout << "Enter the index that you want to remove : ";
                 cin >> itemRemove;
                 if (itemRemove == 1 || queueItem.getSize() <= 1){
@@ -413,21 +411,25 @@ int main(){
                     string item4 = queueItem.getIndex(3);
                     string item5 = queueItem.getIndex(4);
                     Queue<string> queueRemove;
-                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                    int size = queueItem.getSize();
+                    for (int i = 0; i < size; i++){
                         string tempRemove = queueItem.dequeue();
                         if (tempRemove == item1){
-                            queueItem.reduceSize();
+                            continue;
                         } else {
                             queueRemove.enqueue(tempRemove);
                         }
+                        queueItem.reduceSize();
                     }
+                    queueRemove.print();
 
                     for (int i = 0; i < queueRemove.getSize(); i++){
                         string tempRemove = queueRemove.dequeue();
+                        cout << tempRemove << endl;
                         queueItem.enqueue(tempRemove);
                     }
-
-                    queueItem.print();
+                    
+                    cout << "Item successfully removed !!" << endl;
                     cout << "============================================" << endl;
                 } else if (itemRemove == 2 || queueItem.getSize() <= 1){
                     string item1 = queueItem.getIndex(0);
@@ -453,8 +455,8 @@ int main(){
                         cout << tempRemove << endl;
                         queueItem.enqueue(tempRemove);
                     }
-                    cout << "============================================" << endl;
-                    queueItem.print();
+                    
+                    cout << "Item successfully removed !!" << endl;
                     cout << "============================================" << endl;
                 } else if (itemRemove == 3 || queueItem.getSize() <= 1){
                     string item1 = queueItem.getIndex(0);
@@ -463,21 +465,25 @@ int main(){
                     string item4 = queueItem.getIndex(3);
                     string item5 = queueItem.getIndex(4);
                     Queue<string> queueRemove;
-                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                    int size = queueItem.getSize();
+                    for (int i = 0; i < size; i++){
                         string tempRemove = queueItem.dequeue();
                         if (tempRemove == item3){
-                            queueItem.reduceSize();
+                            continue;
                         } else {
                             queueRemove.enqueue(tempRemove);
                         }
+                        queueItem.reduceSize();
                     }
+                    queueRemove.print();
 
                     for (int i = 0; i < queueRemove.getSize(); i++){
                         string tempRemove = queueRemove.dequeue();
+                        cout << tempRemove << endl;
                         queueItem.enqueue(tempRemove);
                     }
-
-                    queueItem.print();
+                    
+                    cout << "Item successfully removed !!" << endl;
                     cout << "============================================" << endl;
                 } else if (itemRemove == 4 || queueItem.getSize() <= 1){
                     string item1 = queueItem.getIndex(0);
@@ -486,21 +492,25 @@ int main(){
                     string item4 = queueItem.getIndex(3);
                     string item5 = queueItem.getIndex(4);
                     Queue<string> queueRemove;
-                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                    int size = queueItem.getSize();
+                    for (int i = 0; i < size; i++){
                         string tempRemove = queueItem.dequeue();
                         if (tempRemove == item4){
-                            queueItem.reduceSize();
+                            continue;
                         } else {
                             queueRemove.enqueue(tempRemove);
                         }
+                        queueItem.reduceSize();
                     }
+                    queueRemove.print();
 
                     for (int i = 0; i < queueRemove.getSize(); i++){
                         string tempRemove = queueRemove.dequeue();
+                        cout << tempRemove << endl;
                         queueItem.enqueue(tempRemove);
                     }
-
-                    queueItem.print();
+                    
+                    cout << "Item successfully removed !!" << endl;
                     cout << "============================================" << endl;
                 } else if (itemRemove == 5 || queueItem.getSize() <= 1){
                     string item1 = queueItem.getIndex(0);
@@ -509,21 +519,25 @@ int main(){
                     string item4 = queueItem.getIndex(3);
                     string item5 = queueItem.getIndex(4);
                     Queue<string> queueRemove;
-                    for (int i = 0; i < queueItem.getSize() + 1; i++){
+                    int size = queueItem.getSize();
+                    for (int i = 0; i < size; i++){
                         string tempRemove = queueItem.dequeue();
                         if (tempRemove == item5){
-                            queueItem.reduceSize();
+                            continue;
                         } else {
                             queueRemove.enqueue(tempRemove);
                         }
+                        queueItem.reduceSize();
                     }
+                    queueRemove.print();
 
                     for (int i = 0; i < queueRemove.getSize(); i++){
                         string tempRemove = queueRemove.dequeue();
+                        cout << tempRemove << endl;
                         queueItem.enqueue(tempRemove);
                     }
-
-                    queueItem.print();
+                    
+                    cout << "Item successfully removed !!" << endl;
                     cout << "============================================" << endl;
                 }
                 break;
@@ -547,33 +561,11 @@ int main(){
                         divideDate(userDMY1[i] ,userDate, userMonth, userYear);
                         cout << userDate << "/" << userMonth << "/" << userYear;
                     }
-                } 
-                // else if (itemRemove2 == 2 || queueItem.getSize() == 2){
-                //     for (int i = 0; i < ){
-
-                //     }
-                // } else if (itemRemove2 == 3 || queueItem.getSize() == 3){
-                //     for (int i = 0; i < )
-                // } else if (itemRemove2 == 4 || queueItem.getSize() == 4){
-                //     for (int i = 0; i < )
-                // } else if (itemRemove2 == 5 || queueItem.getSize() == 5){
-                //     for (int i = 0; i < )
-                // }
-                
+                }
                 break;
 
             case 5:
-                cout << "============================================" << endl;\
-                // int dmy;
-                // cin >> dmy;
-                // cout << divideDate(dmy, userDate, userMonth, userYear) << endl;
-                // cout << checkTime() << endl;
-                // cout<< "[";
-                // while(!queueData.empty()){
-                //     cout<< queueData.dequeue() << " ";
-                //     // queueData.pop();
-                // }
-                // cout<< "]" << endl;
+                cout << "============================================" << endl;
                 break;
 
             case 6:
